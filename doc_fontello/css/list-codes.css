@@ -1,0 +1,5 @@
+
+.icon-check:before { content: '\e800'; } /* '' */
+.icon-check-empty:before { content: '\f096'; } /* '' */
+.icon-doc-text:before { content: '\f0f6'; } /* '' */
+.icon-doc-text-inv:before { content: '\f15c'; } /* '' */

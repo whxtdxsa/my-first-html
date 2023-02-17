@@ -1,0 +1,8 @@
+li :before{
+    content: '\f0f6';
+    font-family: list;
+}
+li *::before{
+    display: inline-block;
+    width: 20px;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>웹 페이지 제목</title>
+	<style>
+		/* 목차 스타일링 */
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			margin: 5px 0;
+			font-weight: bold;
+		}
+		li a {
+			color: #333;
+			text-decoration: none;
+		}
+		li a:hover {
+			color: #0099ff;
+		}
+		/* 활성화된 목차 스타일링 */
+		.active {
+			background-color: #0099ff;
+			color: #fff;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<!-- 목차 -->
+	<ul>
+		<li><a href="#section1">Section 1</a></li>
+		<li><a href="#section2">Section 2</a></li>
+		<li><a href="#section3">Section 3</a></li>
+	</ul>
+
+	<!-- 본문 -->
+	<div id="section1">
+		<h2>Section 1</h2>
+		<p>내용입니다.</p>
+	</div>
+
+	<div id="section2">
+		<h2>Section 2</h2>
+		<p>내용입니다.</p>
+	</div>
+
+	<div id="section3">
+		<h2>Section 3</h2>
+		<p>내용입니다.</p>
+	</div>
+
+	<!-- JavaScript -->
+	<script>
+		// 목차 클릭 이벤트
+		var links = document.querySelectorAll("li a");
+		for (var i = 0; i < links.length; i++) {
+			links[i].addEventListener("click", function() {
+				// 현재 활성화된 목차의 클래스를 제거
+				var current = document.getElementsByClassName("active");
+				if (current.length > 0) {
+					current[0].className = current[0].className.replace(" active", "");
+				}
+				// 클릭한 목차를 활성화
+				this.className += " active";
+                        // 현재 활성화된 목차의 클래스를 저장
+                var current = document.getElementsByClassName("active");
+                if (current.length > 0) {
+                    localStorage.setItem("activeSection", current[0].getAttribute("href"));
+                }
+			});
+		}
+        // 현재 활성화된 목차의 클래스를 저장
+        var current = document.getElementsByClassName("active");
+        if (current.length > 0) {
+            localStorage.setItem("activeSection", current[0].getAttribute("href"));
+        }
+
+        // 저장된 활성화된 목차의 클래스를 불러와 활성화
+        var activeSection = localStorage.getItem("activeSection");
+        if (activeSection) {
+            document.querySelector('a[href="' + activeSection + '"]').className = "active";
+        }
+
+	</script>
+</body>
+</html>
